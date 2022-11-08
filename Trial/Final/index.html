@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .wrapper {
+            min-width: 150px
+        }
+    </style>
+    <title>Shopping list</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <meta charset="windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <H1 align="center"><i>Shooping List</i></H1>
+    <script>
+
+        function addRow() {
+            // get input values
+            var fname = document.getElementById('fname').value;
+            var lname = document.getElementById('lname').value;
+            var age = document.getElementById('age').value;
+
+            // get the html table
+            // 0 = the first table
+            var table = document.getElementsByTagName('table')[0];
+
+            // add new empty row to the table
+            // 0 = in the top 
+            // table.rows.length = the end
+            // table.rows.length/2+1 = the center
+            var newRow = table.insertRow(table.rows.length / 2 + 1);
+
+            // add cells to the row
+            var cel1 = newRow.insertCell(0);
+            var cel2 = newRow.insertCell(1);
+            var cel3 = newRow.insertCell(2);
+
+            // add values to the cells
+            cel1.innerHTML = fname;
+            cel2.innerHTML = lname;
+            cel3.innerHTML = age;
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div style="width:500px ; margin:0px auto">
+
+
+       <span class="wrapper">Product Name:</span>  <input type="text" name="fname" id="fname" /><br /><br />
+       <span class="wrapper">Genre : </span>  <select Name="lname" Size="Number_of_options" id="lname">
+            <option> Skin Care </option>
+            <option> Grocery </option>
+            <option> Clothings</option>
+            <option> Food </option>
+        </select> <br><br>
+        <!-- Genre: <input type="text" name="lname" id="lname" /><br/><br/> -->
+      <span class="wrapper">Genre :  </span> <input type="text" name="age" id="age" /><br /><br />
+        <script src="app.js"></script>
+        <div style="width:300px">
+            <label id="lblsuccess" class="text-success" style="display: none;">
+            </label>
+
+            <form id="addForm">
+                <div style="display:flex; justify-content:space-between ;align-items: flex-end;" class="row">
+                    <div class="col-lg-7 col-md-7 col-sm-7">
+
+                        <span class="wrapper">
+                            Add Reference :
+                        </span> <input type="text" onkeyup="toggleButton(this, 'submit')" class="form-control"
+                            id="item">
+                    </div>
+
+                    <div class="col-lg-5 col-md-5 col-sm-5">
+                        <input type="submit" class="btn btn-dark" id="submit" value="Submit" disabled>
+                    </div>
+                </div>
+            </form>
+
+            <h3 class="mt-4 wrapper ">Tasks</h3>
+
+            <form id="addForm">
+                <ul class="list-group" id="items"></ul>
+            </form>
+        </div>
+        <button onclick="addRow();">Add Row</button><br /><br />
+
+        <table border="1" id="studtable">
+
+            <tr>
+                <th>Product Name</th>
+                <th>Genre</th>
+                <th>Price</th>
+            </tr>
+
+
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

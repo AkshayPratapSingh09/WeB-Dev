@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <link rel="stylesheet" href="file:///C:/Users/Ap/Desktop/Java/WebDev/trial/styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML form to Google Sheet</title>
+</head>
+ 
+<body>
+    <h1 id="msg"></h1>
+    <form>
+        <input type="text" name="name" placeholder='Enter Product Name'><br><br>
+        <input type="text" name="Genre" placeholder='Genre'><br><br>
+        <input type="url" name="phone" placeholder='Amazon URL'><br><br>
+        <input type="url" name="phone" placeholder='Flipkart URL'><br><br>
+        <input type="url" name="phone" placeholder='References'><br><br>
+        <!-- <input type="url" name="phone" placeholder='Flipkart URL'><br><br> -->
+        <input type="submit" id="sub">
+    </form>
+    <script>
+        let form = document.querySelector("form");
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.querySelector("#sub").value = "Submiting..";
+            let data = new FormData(form);
+            fetch('https://script.google.com/macros/s/AKfycbwa9QCYOq_75BA_gva8ZRPbtf0TMvTs20jIjBPdCQjpWGvG3qFBmyOnFkhajiuU9ibXRA/exec', {
+                    method: "POST",
+                    body: data
+                })
+                .then(res => res.text())
+                .then(data => {
+                    document.querySelector("#msg").innerHTML = data;
+                    document.querySelector("#sub").value = "Submit"
+                });
+        })
+    </script>
+
+<div class="slide-container">
+<img src="C:\Users\Ap\Downloads\Goal.jpg",                      "C:\Users\Ap\Downloads\CollegeID.jpeg"/>
+<img src="http://placehold.it/200" />
+<img src="http://placehold.it/200" />
+</div>
+
+<iframe
+src="Embed Page URL"
+width="600"
+height="300"
+scrolling="no">
+</iframe>
+</body>
+ 
+</html>

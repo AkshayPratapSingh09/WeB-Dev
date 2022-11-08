@@ -1,0 +1,53 @@
+<html>
+    <head> 
+        <title>Shopping list</title>
+    </head>
+    <body>
+        <h1 align="center"><i>Add ITEM</i></h1>
+
+        <form>
+            <H3>Enter Product Name</H3>
+            <input type ="text" id="Product"/>
+            <H3>Enter Amazon Link</H3>
+            <input type ="text" id= "Amazon"/>
+            <H3>Enter Flipkart Link</H3>
+            <input type ="text" id="Flipkart" />
+            <button>Submit</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                <th>Product Name</th>
+                <th>Amazon Link</th>
+                <th>Flipkart Link</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <script>
+           const form = document.querySelector("form");
+           const tableEl = document.querySelector("tbody");
+           
+           function onAddWebsite(e) {
+            e.preventDefault();
+            // alert("This works");
+            const product = document.getElementById("Product").value;
+            const amazon = document.getElementById("Amazon").value;
+            const flipkart = document.getElementById("Flipkart").value;
+            tableEl.innerHTML += `
+            <tr>
+                <td>${product}</td>
+                <td><a href=${amazon} class='button'>Amazon</a></td>
+                <td><a href=${flipkart} class='button'>Flipkart</a></td>
+                </tr>
+                `;
+                // <td>${<a href="flipkart" class="button">flipkart</a>}</td>
+            
+           }
+           form.addEventListener("submit",onAddWebsite);
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping list</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <H1 align = "center"><i>Shooping List</i></H1>
+        <script>
+            
+            function addRow()
+            {
+                // get input values
+                var fname = document.getElementById('fname').value;
+                 var lname = document.getElementById('lname').value;
+                  var age = document.getElementById('age').value;
+                  
+                  // get the html table
+                  // 0 = the first table
+                  var table = document.getElementsByTagName('table')[0];
+                  
+                  // add new empty row to the table
+                  // 0 = in the top 
+                  // table.rows.length = the end
+                  // table.rows.length/2+1 = the center
+                  var newRow = table.insertRow(table.rows.length/2+1);
+                  
+                  // add cells to the row
+                  var cel1 = newRow.insertCell(0);
+                  var cel2 = newRow.insertCell(1);
+                  var cel3 = newRow.insertCell(2);
+                  
+                  // add values to the cells
+                  cel1.innerHTML = fname;
+                  cel2.innerHTML = lname;
+                  cel3.innerHTML = age;
+            }
+            
+        </script>
+        
+    </head>
+
+    <body>
+        <script src="script.js"></script>
+
+        Product Name: <input type="text" name="fname" id="fname" /><br/><br/>
+        Genre: <input type="text" name="lname" id="lname" /><br/><br/>
+        Price: <input type="text" name="age" id="age" /><br/><br/>
+        <button onclick="addRow();">Add Row</button><br/><br/>
+
+        <table border="1" id="studtable">
+            
+            <tr>
+                <th>Product Name</th>
+                <th>Genre</th>
+                <th>Price</th>
+            </tr>
+            
+            
+        </table>
+        <script>
+ 
+            $(document).ready(function () {
+               $("#studtable").table2excel({
+                   filename: "Students.xls"
+               });
+            });
+            
+           </script>
+    </body>
+
+</html>
